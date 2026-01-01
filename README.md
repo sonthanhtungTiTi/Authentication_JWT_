@@ -1,4 +1,4 @@
-
+- flow
 Các bước làm: cài môi trường: 
 npm i express cors dotenv mongoose
 cài đặc BE:
@@ -58,6 +58,7 @@ Logic dang nhap
  
 //goi ra dung trong server  
 So luot key  
+
 
 
 
