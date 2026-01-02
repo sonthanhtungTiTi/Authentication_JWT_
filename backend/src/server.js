@@ -9,7 +9,10 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import {connectDB} from "./libs/db.js";
-import authRouter from "./router/authRoute.js";
+import authRoute from "./router/authRoute.js";
+import userRoute from "./router/userRoute.js";
+import { protectedRouter } from './middleware/authMiddleware.js';
+
 
 dotenv.config(); //load bien moi truong tu file .env
 
@@ -25,9 +28,12 @@ app.use(cors({
     credentials: true
 }));
 //publc router
-app.use('/api/auth', authRouter);
+app.use('/api/auth', authRoute);
 
 
+//private router
+app.use(protectedRouter);
+app.use("/api/users", userRoute);
 
 
 connectDB().then(()=>{
